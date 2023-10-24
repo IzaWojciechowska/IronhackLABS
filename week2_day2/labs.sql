@@ -44,7 +44,7 @@ where return_date is null;
 -- they both don't show good values of avaliable films now :/ 
 SELECT COUNT( film_id) as "Amount of available films now"
 FROM film
-WHERE film.film_id not in 
+WHERE film_id not in 
 			(select distinct film_id from inventory where inventory_id in 
 											(select inventory_id from rental where return_date IS NULL));
 
