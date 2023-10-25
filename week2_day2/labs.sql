@@ -36,23 +36,10 @@ from staff;
 select count(*) "Amount of all films"
 from film;
 
-select count(*) "Amount of not available films now"
-from rental
-where return_date is null;
-
-
--- they both don't show good values of avaliable films now :/ 
-SELECT COUNT( film_id) as "Amount of available films now"
-FROM film
-WHERE film_id not in 
-			(select distinct film_id from inventory where inventory_id in 
-											(select inventory_id from rental where return_date IS NULL));
-
-select count(distinct film_id) as "Amount of available films now"
-from inventory 
-where inventory_id not in 
-					(select inventory_id from rental where return_date IS NULL);
-
+select count(distinct film_id) as "Amount of films that have been rented"
+from inventory
+where inventory_id in (select inventory_id from rental); 
+                 
 -- 4 Determine the number of distinct last names of the actors in the database.
 select count(distinct last_name)
 from actor;
