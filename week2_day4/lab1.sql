@@ -22,7 +22,9 @@ group by s.staff_id;
 select a.actor_id, a.first_name, a.last_name, count(fa.film_id)
 from actor a
 join film_actor fa on a.actor_id = fa.actor_id
-group by a.actor_id;
+group by a.actor_id
+order by count(fa.film_id) desc
+limit 1;
 
 -- 4. Most active customer (the customer that has rented the most number of films)
 
