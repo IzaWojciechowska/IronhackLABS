@@ -38,7 +38,7 @@ where f.film_id in (select fc.film_id
 
 -- Retrieve the name and email of customers from Canada using both subqueries and joins. 
 -- To use joins, you will need to identify the relevant tables and their primary and foreign keys.
-select cu.email
+select cu.first_name, cu.last_name, cu.email
 from customer cu
 where cu.address_id in (select a.address_id
 						from address a 
@@ -48,7 +48,7 @@ where cu.address_id in (select a.address_id
 																   from country co
 																   where co.country = 'Canada')));
 
-select cu.email
+select cu.first_name, cu.last_name, cu.email
 from customer cu
 join address a  on cu.address_id = a.address_id
 join city ci on a.city_id = ci.city_id
